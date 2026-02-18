@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	
+	string l;
+	cin >> l;
+	
+	if(l == "NLCS") cout << "North London Collegiate School";
+	else if(l == "BHA") cout << "Branksome Hall Asia";
+	else if(l == "KIS") cout << "Korea International School";
+	else if(l == "SJA") cout << "St. Johnsbury Academy";
+		
+	return 0;
+}
