@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+	ios::sync_with_stdio(false);
+	cin.tie();
+	
+	int n;
+	cin >> n;
+	cout << n - 2024;
+	
+	return 0;
+}
