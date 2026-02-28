@@ -1,8 +1,10 @@
+//2시간 뻘짓 
 #include <iostream>
 using namespace std;
+
 string Pn;
-int s, n, sum;
-int f(int Index, int FindingLen);
+long long s, n, Index, sum, cnt;
+bool check = false; 
 
 int main() {
 	ios::sync_with_stdio(false);
@@ -11,43 +13,21 @@ int main() {
 	cin >> s >> n;
 	cin >> Pn;
 	
-	for(int i = 0; i < n; i++) {
-		if(Pn[i] == 'I') {
-			int t = f(i + 1, s);
-			if(t) {
-				sum += t;
-				i += ((2 * s + 1) + (t - 1) * 2) - 1; // oo(ioioi)(oi)(oi)...
+	while(Index + 2 < n) {
+		if(Pn[Index] == 'I' && Pn[Index+1] == 'O' && Pn[Index+2] == 'I') {
+			cnt++;
+			Index += 2;
+			
+			if(cnt == s) {
+				sum++;
+				cnt --;
 			}
+		} else {
+			Index++;
+			cnt = 0;
 		}
 	}
-	
 	cout << sum;
 	
 	return 0;
-}
-
-int f(int Index, int FindingLen) {
-	int cnt = 0;
-	bool FindIO = false;
-	
-	while(Index < n) {
-		
-		if(FindIO) {
-			if(Pn[Index] == 'I') {
-				FindIO = false;
-				cnt++;
-			} else break;
-		}
-		
-		else if(!FindIO) {
-			if(Pn[Index] == 'O') {
-				FindIO = true;
-			} else break;
-		}
-		
-		Index++;
-	}
-	
-	if(cnt < FindingLen) return 0;
-	else return cnt - FindingLen + 1;
 }
